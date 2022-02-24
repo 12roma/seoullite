@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/user")
 public class UserRestController {
@@ -15,10 +17,9 @@ public class UserRestController {
     EmailService emailService;
 
     @PostMapping("/join")
-    public String join( User user){
+    public String join( User user)throws IOException {
 
         emailService.sendMail(user.getEmail());
-
         return "null";
     }
 }
